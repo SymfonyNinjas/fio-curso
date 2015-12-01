@@ -1,0 +1,57 @@
+<style>
+    fieldset {
+        background-color: brown;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    label {
+        display: block;
+    }
+    fieldset div{
+        border: 1px dashed #ccc;
+        margin: 20px;
+        padding: 10px;
+    }
+
+    fieldset legend {
+        border: 1px dotted #aacd4e;
+        padding: 20px;
+        background-color: #aacd4e;
+    }
+
+    fieldset input, textarea {
+        width: 100%;
+        border: 3px solid #aa3333;
+        padding: 5px;
+    }
+
+
+    .acoes{
+        margin: 0px 20px;
+        float: right;
+    }
+    .acoes input, .acoes textarea {
+        width: auto;
+        border: 1px solid #ffcc00;
+        padding: 5px;
+    }
+</style>
+<h1>Tarefas</h1>
+<fieldset>
+    <legend><a href="{{ path('fiocruz_tarefas_default_index') }}">Lista de Tarefas</a> - Nova Tarefa</legend>
+    <form action="{{ path('fiocruz_tarefas_default_salvar') }}" method="post">
+        <div>
+            <label>Título</label>
+            <input type="text" name="dsTitulo" placeholder="Título da Tarefa">
+        </div>
+        <div>
+            <label>Descrição</label>
+            <textarea name="dsTarefa" cols="30" rows="10"></textarea>
+        </div>
+        <div class="acoes">
+            <input type="reset" value="Limpar">
+            <input type="submit" value="Cadastrar">
+        </div>
+    </form>
+</fieldset>

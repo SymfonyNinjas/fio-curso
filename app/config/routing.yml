@@ -1,0 +1,8 @@
+fio_cruz_tarefas:
+    resource: "@FioCruzTarefasBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

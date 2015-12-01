@@ -1,0 +1,22 @@
+<h1>Tarefas</h1>
+<a href="{{ path('fiocruz_tarefas_default_criar') }}">Criar Tarefa</a>
+<table width="100%" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Título</th>
+        <th>Tarefa</th>
+        <th>Data de Criação</th>
+        <th>Data de Início</th>
+        <th>Data de Fim</th>
+    </tr>
+    {% for tarefa in tarefas %}
+        <tr>
+            <td>{{ tarefa.coTask }}</td>
+            <td>{{ tarefa.dsTitulo }}</td>
+            <td>{{ tarefa.dsTarefa }}</td>
+            <td>{{ tarefa.dtCriacao | date('d/m/Y')}}</td>
+            <td>{{ tarefa.dtInicio | date('d/m/Y')}}</td>
+            <td>{{ tarefa.dtFim | date('d/m/Y')}}</td>
+        </tr>
+    {% endfor %}
+</table>
