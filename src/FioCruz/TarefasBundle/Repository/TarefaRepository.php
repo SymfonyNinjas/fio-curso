@@ -21,7 +21,7 @@ class TarefaRepository extends \Doctrine\ORM\EntityRepository
             ->where("t.dtCriacao > :dataDeCriacao")
             ->orderBy("t.dsTitulo")
             ->setParameter('dataDeCriacao', $dataCriacao);
-        
+
         return $queryBuilder->getQuery()->getResult();
     }
 }
