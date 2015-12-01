@@ -43,4 +43,13 @@ class TarefaService
         $this->em->flush();
     }
 
+    /**
+     * @return array
+     */
+    public function getTarefas()
+    {
+        return $this->em->getRepository('FioCruzTarefasBundle:Tarefa')
+            ->getTarefas();
+    }
+
 }

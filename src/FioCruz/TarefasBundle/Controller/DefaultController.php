@@ -19,11 +19,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $tarefas = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('FioCruzTarefasBundle:Tarefa')
-            ->findAll();
-
-        return array('tarefas' => $tarefas);
+        $tarefaService = $this->get('FioCruzTarefasBundle.TarefasService');
+        return array('tarefas' => $tarefaService->getTarefas());
     }
 
     /**

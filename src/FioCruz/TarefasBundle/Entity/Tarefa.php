@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tarefa
  *
  * @ORM\Table(name="tb_tarefa")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FioCruz\TarefasBundle\Repository\TarefaRepository")
  */
 class Tarefa
 {
@@ -187,4 +187,3 @@ class Tarefa
         return $this->dtCriacao;
     }
 }
-
