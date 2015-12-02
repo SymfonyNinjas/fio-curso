@@ -5,6 +5,7 @@ namespace FioCruz\TarefasBundle\Services;
 use Doctrine\ORM\EntityManager;
 use FioCruz\TarefasBundle\Entity\Tarefa;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class TarefaService
@@ -39,6 +40,20 @@ class TarefaService
             throw new BadRequestHttpException('Preencha o campo Título');
         }
 
+        if (!$tarefa->getCoTarefa()) {
+            $tarefaStatus = $this->em
+                ->getPartialReference('FioCruzTarefasBundle:TarefaStatus', 1);
+
+//            $tarefaStatus = $this->em->getRepository('FioCruzTarefasBundle:TarefaStatus')
+//                ->find(10);
+
+            if (!$tarefaStatus) {
+                throw new NotFoundHttpException('Status da tarefa não encontrado!');
+            }
+
+            $tarefa->setStatus($tarefaStatus);
+        }
+
         $this->em->persist($tarefa);
         $this->em->flush();
     }
@@ -50,6 +65,11 @@ class TarefaService
     {
         return $this->em->getRepository('FioCruzTarefasBundle:Tarefa')
             ->getTarefas();
+    }
+
+    public function deletar($tarefa)
+    {
+        $this->em->getRepository('FioCruzTarefasBundle:Tarefa')->deletar($tarefa);
     }
 
 }

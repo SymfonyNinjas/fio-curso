@@ -19,7 +19,14 @@ class Tarefa
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $coTask;
+    private $coTarefa;
+
+    /**
+     * @var TarefaStatus
+     * @ORM\ManyToOne(targetEntity="FioCruz\TarefasBundle\Entity\TarefaStatus")
+     * @ORM\JoinColumn(name="co_tarefa_status", referencedColumnName="co_tarefa_status")
+     */
+    private $status;
 
     /**
      * @var string
@@ -62,9 +69,25 @@ class Tarefa
      *
      * @return integer
      */
-    public function getCoTask()
+    public function getCoTarefa()
     {
-        return $this->coTask;
+        return $this->coTarefa;
+    }
+
+    /**
+     * @return TarefaStatus
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param TarefaStatus $status
+     */
+    public function setStatus(TarefaStatus $status)
+    {
+        $this->status = $status;
     }
 
     /**

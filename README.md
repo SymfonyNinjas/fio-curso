@@ -65,3 +65,8 @@ Comando para geração de classes de Repositório:
 
     `php app/console doctrine:generate:entities NomeDoBundle`
 
+
+
+Arquivo de Logs:
+----------------
+Os arquivos de log ficam em: `app/logs/` e podem ser dev.log e prod.log

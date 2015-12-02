@@ -18,10 +18,22 @@ class TarefaRepository extends \Doctrine\ORM\EntityRepository
     public function getTarefas($dataCriacao = '2015-11-25')
     {
         $queryBuilder = $this->createQueryBuilder('t')
+            ->addSelect('s')
+            ->join('t.status', 's')
             ->where("t.dtCriacao > :dataDeCriacao")
-            ->orderBy("t.dsTitulo")
+            ->orderBy("t.coTarefa")
             ->setParameter('dataDeCriacao', $dataCriacao);
 
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function deletar($tarefa)
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->delete()
+            ->where('t.coTarefa = :tarefa')
+            ->setParameter('tarefa', $tarefa);
+
+        $qb->getQuery()->execute();
     }
 }

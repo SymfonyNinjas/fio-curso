@@ -8,15 +8,23 @@
         <th>Data de Criação</th>
         <th>Data de Início</th>
         <th>Data de Fim</th>
+        <th>Status</th>
+        <th>Ações</th>
     </tr>
     {% for tarefa in tarefas %}
         <tr>
-            <td>{{ tarefa.coTask }}</td>
+            <td>{{ tarefa.coTarefa }}</td>
             <td>{{ tarefa.dsTitulo }}</td>
             <td>{{ tarefa.dsTarefa }}</td>
             <td>{{ tarefa.dtCriacao | date('d/m/Y')}}</td>
             <td>{{ tarefa.dtInicio | date('d/m/Y')}}</td>
             <td>{{ tarefa.dtFim | date('d/m/Y')}}</td>
+            <td>{{ tarefa.status.statusTarefa }}</td>
+            <td>
+                <a href="{{ path('fiocruz_tarefas_default_deletar', {'coTarefa': tarefa.coTarefa}) }}">Deletar</a>
+                |
+                <a href="{{ path('fiocruz_tarefas_default_editar', {'coTarefa': tarefa.coTarefa}) }}">Editar</a>
+            </td>
         </tr>
     {% endfor %}
 </table>

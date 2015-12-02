@@ -43,13 +43,14 @@
     <form action="{{ path('fiocruz_tarefas_default_salvar') }}" method="post">
         <div>
             <label>Título</label>
-            <input type="text" name="dsTitulo" placeholder="Título da Tarefa">
+            <input type="text" name="dsTitulo" placeholder="Título da Tarefa" value="{{ tarefa.dsTitulo }}">
         </div>
         <div>
             <label>Descrição</label>
-            <textarea name="dsTarefa" cols="30" rows="10"></textarea>
+            <textarea name="dsTarefa" cols="30" rows="10">{{ tarefa.dsTarefa }}</textarea>
         </div>
         <div class="acoes">
+            <input type="hidden" name="coTarefa" value="{{ tarefa.coTarefa }}"/>
             <input type="reset" value="Limpar">
             <input type="submit" value="Cadastrar">
         </div>
