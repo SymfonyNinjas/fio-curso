@@ -52,24 +52,37 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   "%database_driver%"
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
+        default_connection: padrao
+        connections:
+            padrao:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+            alternativa:
+                driver:   "%database_alternativa_driver%"
+                host:     "%database_alternativa_host%"
+                port:     "%database_alternativa_port%"
+                dbname:   "%database_alternativa_name%"
+                user:     "%database_alternativa_user%"
+                password: "%database_alternativa_password%"
+                charset:  UTF8
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        entity_managers:
+            em_padrao:
+                connection: padrao
+                mappings:
+                    AppBundle: ~
+                    FioCruzTarefasBundle: ~
+            em_alternativo:
+                connection: alternativa
+                mappings:
+                    FioCruzTarefasBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
