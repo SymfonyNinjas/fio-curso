@@ -36,4 +36,16 @@ class TarefaRepository extends \Doctrine\ORM\EntityRepository
 
         $qb->getQuery()->execute();
     }
+
+    public function queryNativa($id) {
+        $query = "SELECT * FROM tb_tarefa WHERE co_tarefa = ?";
+
+        $conexao = $this->getEntityManager()->getConnection();
+
+        $statement = $conexao->prepare($query);
+        $statement->bindValue(1, $id);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
