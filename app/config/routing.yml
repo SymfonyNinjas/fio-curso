@@ -1,3 +1,8 @@
+fio_cruz_saude:
+    resource: "@FioCruzSaudeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 fio_cruz_tarefas:
     resource: "@FioCruzTarefasBundle/Controller/"
     type:     annotation
