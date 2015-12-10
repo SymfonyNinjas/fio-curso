@@ -83,6 +83,7 @@ doctrine:
                 connection: alternativa
                 mappings:
                     FioCruzTarefasBundle: ~
+                    FioCruzSaudeBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
